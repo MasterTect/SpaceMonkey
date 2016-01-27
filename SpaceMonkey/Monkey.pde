@@ -5,6 +5,8 @@ class Monkey
   int y;
   int speed;
   PImage image;
+  int imageWidth = 50;
+  int imageHeight = 30;
   
   Monkey()
   {
@@ -13,26 +15,54 @@ class Monkey
     y = 250;
     speed = 5;
     
-    image = loadImage("space_monkey2.jpg");
+    image = loadImage("space_monkey3.jpg");
   }
   
   void update()
   {
     if (keys['A'])
     {
-      x -= speed;
+      if ( x == 10 )
+      {
+        
+      }
+      else
+      {
+        x -= speed;
+      }
     }
     if (keys['W'])
     {
-      y -= speed;
+      if ( y == 20 )
+      {
+        
+      }
+      else
+      {
+        y -= speed;
+      }
     }
     if (keys['D'])
     {
-      x += speed;
+      if ( x >= width - 200 )
+      {
+        
+      }
+      else
+      {
+        x += speed;
+      }
     }
     if (keys['S'])
     {
-      y += speed;
+      if ( y == height - 50 )
+      {
+        
+      }
+      else
+      {
+        y += speed;
+      }
     }
     if (keys[' '])
     {
