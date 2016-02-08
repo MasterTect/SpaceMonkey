@@ -4,7 +4,7 @@ class Bullet extends Monkey
   {
     // Draw Bullets
     pushMatrix();
-    translate(x + 55, y + 20);
+    translate(x + 15, y + 25);
     fill(255, 255, 0);
     line(0, 0, 5, 0);
     popMatrix();
@@ -15,6 +15,7 @@ class Bullet extends Monkey
     stroke(255);
     
     // Bullet speed
-    x += 5;
+    x += speed + 2; // A 2 is added to make sure the bullet travels faster than the Monkey
+    
   }
 }
