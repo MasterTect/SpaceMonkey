@@ -1,7 +1,13 @@
+import ddf.minim.*;
+
+AudioPlayer Theme;
+Minim minim;
+
 Monkey monkey;
 
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<Stars> stars = new ArrayList<Stars>();
+ArrayList<BadGuys> badGuys = new ArrayList<BadGuys>();
 
 boolean[] keys = new boolean[500];
 
@@ -12,6 +18,10 @@ void setup()
 {
   size(900,500);
   background(0);
+  
+  minim = new Minim(this);
+  Theme = minim.loadFile("Go Go Space Monkey.mp3");
+  Theme.play();
   
   centreX = width/2;
   centreY = height/2;
@@ -38,7 +48,7 @@ void draw()
 
   if (frameCount % 30 == 0)
   {
-    Stars star = new Stars(  );
+    Stars star = new Stars();
     stars.add(star);
   }
   
@@ -105,4 +115,24 @@ void drawGame()
       text("Pause", centreX - 20, centreY);
     }
     
+    
+  if (frameCount % 120 == 0)
+  {
+    BadGuys badGuy = new BadGuys();
+    badGuys.add(badGuy);
+  }
+  
+  for(BadGuys m: badGuys)
+  {
+    m.update();
+    m.render();
+  }
+    
+}
+
+void stop()
+{
+  Theme.close();
+  minim.stop();
+  super.stop();
 }
