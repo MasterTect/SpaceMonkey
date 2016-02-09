@@ -6,10 +6,8 @@ class Monkey extends GameObject
   
   Monkey()
   {
-    x = 25;
+    x = 50;
     y = 250;
-    speed = 2;
-    
   }
   
   void update()

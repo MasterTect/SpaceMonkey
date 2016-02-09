@@ -1,4 +1,4 @@
-class Stars extends Monkey
+class Stars extends GameObject
 {
   int radius;
   
@@ -7,6 +7,7 @@ class Stars extends Monkey
     x = width;
     y = (int) random(0, height);
     radius = (int) random(1, 10);
+    
   }
   
   void render()

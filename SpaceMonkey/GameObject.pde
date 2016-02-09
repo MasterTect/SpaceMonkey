@@ -1,9 +1,8 @@
 class GameObject
 {
-  PVector pos;
   int x;
   int y;
-  int speed;
+  int speed = 2;
   int elapsed = 30;
   
   GameObject()

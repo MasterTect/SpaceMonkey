@@ -5,7 +5,7 @@ class Bullet extends Monkey
     // Draw Bullets
     pushMatrix();
     translate(x + 15, y + 25);
-    fill(255, 255, 0);
+    stroke(0, 255, 0);
     line(0, 0, 5, 0);
     popMatrix();
   }
