@@ -1,6 +1,6 @@
 class Stars extends GameObject
 {
-  int radius;
+  
   
   Stars()
   {

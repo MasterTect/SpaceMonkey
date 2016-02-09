@@ -1,6 +1,6 @@
 class Bullet extends GameObject
 {
-  AudioPlayer audio;
+  
   
   Bullet()
   {

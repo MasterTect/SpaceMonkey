@@ -1,11 +1,13 @@
 class GameObject
 {
   PVector pos;
-  //int x;
-  //int y;
-  int speed = 2;
+  int speed = 5;
   int elapsed = 30;
-  int level;
+  int radius;
+  int lives;
+  int level = 1;
+  
+  AudioPlayer audio;
   
   GameObject()
   {

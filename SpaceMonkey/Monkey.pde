@@ -8,6 +8,7 @@ class Monkey extends GameObject
   {
     pos.x = 40;
     pos.y = height/2;
+    lives = 3;
   }
   
   void update()
