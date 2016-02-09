@@ -4,6 +4,7 @@ class GameObject
   int y;
   int speed = 2;
   int elapsed = 30;
+  int level;
   
   GameObject()
   {

@@ -6,8 +6,16 @@ class Stars extends GameObject
   {
     x = width;
     y = (int) random(0, height);
-    radius = (int) random(1, 10);
+    radius = (int) random(1, 8);
     
+    if (radius >= 4)
+    {
+      speed = (int) random(3, 5);
+    }
+    if (radius < 4)
+    {
+      speed = (int) random(1, 3);
+    }
   }
   
   void render()

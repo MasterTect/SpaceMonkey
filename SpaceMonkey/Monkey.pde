@@ -8,6 +8,7 @@ class Monkey extends GameObject
   {
     x = 50;
     y = 250;
+    speed += level;
   }
   
   void update()
@@ -56,7 +57,7 @@ class Monkey extends GameObject
         y += speed;
       }
     }
-    if (keys[' '] && elapsed > 30)
+    if (keys[' '] && elapsed > 60)
     {
       // Create a new bullet instance and add it to the arraylist of bullets
       Bullet bullet = new Bullet();
@@ -64,6 +65,7 @@ class Monkey extends GameObject
       bullet.y = y;
       bullets.add(bullet);
       elapsed = 0;
+      
     }
     elapsed ++;
   }

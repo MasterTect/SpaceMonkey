@@ -88,7 +88,7 @@ void drawGame()
 {
   if (keyPressed)
     {
-      if(key == 'P')
+      if(key == '0')
       {
         pause = 0;
       }
@@ -98,6 +98,7 @@ void drawGame()
       }
     
     }
+    
     if (pause == 0)
     {
       monkey.update();
@@ -108,26 +109,26 @@ void drawGame()
         b.update();
         b.render();
       }
+      
+      if (frameCount % 120 == 0)
+      {
+        BadGuys badGuy = new BadGuys();
+        badGuys.add(badGuy);
+      }
+  
+      for(BadGuys m: badGuys)
+      {
+        m.update();
+        m.render();
+      }
+      
     }
+    
     if (pause == 1)
     {
       textSize(26);
       text("Pause", centreX - 20, centreY);
     }
-    
-    
-  if (frameCount % 120 == 0)
-  {
-    BadGuys badGuy = new BadGuys();
-    badGuys.add(badGuy);
-  }
-  
-  for(BadGuys m: badGuys)
-  {
-    m.update();
-    m.render();
-  }
-    
 }
 
 void stop()
