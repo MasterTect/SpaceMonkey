@@ -72,6 +72,7 @@ void draw()
     drawGame();
   }
   
+  // checkCollisions();
 }// end draw
 
 
@@ -126,14 +127,34 @@ void drawGame()
     
     if (pause == 1)
     {
-      textSize(26);
-      text("Pause", centreX - 20, centreY);
+      fill(100, 100, 100);
+      rect(100, 100, width - 200, height - 200);
+      fill(255);
+      textSize(20);
+      text("Unpause => 0", centreX - 60, centreY + 40);
+      textSize(50);
+      text("Paused", centreX - 70, centreY);
+     
     }
 }
 
-void stop()
+void checkCollisions()
 {
-  Theme.close();
-  minim.stop();
-  super.stop();
+  for (int i = bullets.size() - 1 ; i >= 0   ;i --)
+  {
+    Bullet bull = bullets.get(i);
+    
+    for (int j = badGuys.size() - 1 ; j >= 0 ; j --)
+    {
+      BadGuys bg = badGuys.get(j);
+     /*
+      if ( bull.pos.dist(bg.pos) < bg.radius)
+      {
+        badGuys.remove(bg);
+      }
+      */
+    }
+    
+  }
+  
 }

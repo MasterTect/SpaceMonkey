@@ -1,7 +1,8 @@
 class GameObject
 {
-  int x;
-  int y;
+  PVector pos;
+  //int x;
+  //int y;
   int speed = 2;
   int elapsed = 30;
   int level;
@@ -9,11 +10,12 @@ class GameObject
   GameObject()
   {
     // Constructor chaining
-    this(width * 0.5f, height  * 0.5f);     
+    this(width * 2, height * 2);     
   }
   
   GameObject(float x, float y)
   {
-    //pos = new PVector(x, y);
+    pos = new PVector(x, y);
   }
+  
 }

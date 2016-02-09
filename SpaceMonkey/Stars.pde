@@ -4,8 +4,8 @@ class Stars extends GameObject
   
   Stars()
   {
-    x = width;
-    y = (int) random(0, height);
+    pos.x = width;
+    pos.y = (int) random(0, height);
     radius = (int) random(1, 8);
     
     if (radius >= 4)
@@ -24,14 +24,14 @@ class Stars extends GameObject
     pushMatrix();
     stroke(255);
     fill(255);
-    translate(x, y);
+    translate(pos.x, pos.y);
     ellipse(0, 0, radius, radius);
     popMatrix();
   }
   
   void update()
   {
-    x -= speed;
+    pos.x -= speed;
     
   }
   

@@ -1,12 +1,19 @@
-class Bullet extends Monkey
+class Bullet extends GameObject
 {
+  AudioPlayer audio;
+  
+  Bullet()
+  {
+    audio = minim.loadFile("Laser-Sound.mp3");
+  }
+  
   void render()
   {
     // Draw Bullets
     pushMatrix();
-    translate(x + 15, y + 25);
+    translate(pos.x + 25, pos.y + 25);
     stroke(0, 255, 0);
-    line(0, 0, 5, 0);
+    line(0, 0, 10, 0);
     popMatrix();
   }
   
@@ -15,7 +22,13 @@ class Bullet extends Monkey
     stroke(255);
     
     // Bullet speed
-    x += speed + 2; // A 2 is added to make sure the bullet travels faster than the Monkey
+    pos.x += speed + 2; // A 2 is added to make sure the bullet travels faster than the Monkey
     
+  }
+  
+  void laser()
+  {
+    audio.rewind();
+    audio.play();
   }
 }

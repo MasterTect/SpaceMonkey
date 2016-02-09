@@ -3,21 +3,22 @@ class BadGuys extends GameObject
   
   BadGuys()
   {
-    x = width;
-    y = (int) random(60, height);
+    pos.x = width;
+    pos.y = (int) random(80, height - 30);
   }
+  
   void render()
   {
     pushMatrix();
     stroke(0,255,0);
     fill(0);
-    ellipse(x, y, 30, 30);
+    ellipse(pos.x, pos.y, 30, 30);
     popMatrix();
   }
   
   void update()
   {
-    x -= speed;
+    pos.x -= speed;
   }
   
 }

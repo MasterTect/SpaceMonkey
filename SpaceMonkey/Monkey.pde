@@ -6,125 +6,116 @@ class Monkey extends GameObject
   
   Monkey()
   {
-    x = 50;
-    y = 250;
-    speed += level;
+    pos.x = 40;
+    pos.y = height/2;
   }
   
   void update()
   {
     if (keys['A'])
     {
-      if ( x < 25 )
+      if ( pos.x > 40 )
       {
-        
-      }
-      else
-      {
-        x -= speed;
+        pos.x -= speed;
       }
     }
     if (keys['W'])
     {
-      if ( y == 60 )
+      if ( pos.y >= 60 )
       {
-        
-      }
-      else
-      {
-        y -= speed;
+        pos.y -= speed;
       }
     }
     if (keys['D'])
     {
-      if ( x >= width - 200 )
+      if ( pos.x <= width - 100 )
       {
-        
-      }
-      else
-      {
-        x += speed;
+        pos.x += speed;
       }
     }
     if (keys['S'])
     {
-      if ( y == height - 50 )
+      if ( pos.y < height - 50 )
       {
-        
-      }
-      else
-      {
-        y += speed;
+        pos.y += speed;
       }
     }
-    if (keys[' '] && elapsed > 60)
+    if (keys[' '] && elapsed > 30)
     {
       // Create a new bullet instance and add it to the arraylist of bullets
+
       Bullet bullet = new Bullet();
-      bullet.x = x;
-      bullet.y = y;
+      bullet.pos.x = pos.x;
+      bullet.pos.y = pos.y;
       bullets.add(bullet);
+      bullet.laser();
       elapsed = 0;
       
     }
     elapsed ++;
   }
   
+    
   void render()
   {
-    //stroke(255);
-    //fill(255, 0, 0);
-    //image(image, x, y);
+
+    pushMatrix();
+    translate(0, 0);
     
+    //textSize(20);
+    //text("X: " + pos.x, pos.x + 40, pos.y + 40);
+    //text("Y: " + pos.y, pos.x + 40, pos.y + 60);
     // helmet
     stroke(255);
     fill(0);
-    ellipse(x, y, 40, 40);
+    ellipse(pos.x, pos.y, 40, 40);
     
     stroke(darkBrown);
     fill(darkBrown);
     
     // left ear
-    ellipse(x - 10, y - 10, 10, 10);
+    ellipse(pos.x - 10, pos.y - 10, 10, 10);
     //right ear
-    ellipse(x + 10, y - 10, 10, 10);
+    ellipse(pos.x + 10, pos.y - 10, 10, 10);
     //body
-    ellipse(x, y + 30, 10, 20);
+    ellipse(pos.x, pos.y + 30, 10, 20);
     //head
-    ellipse(x, y + 5, 30, 30);
+    ellipse(pos.x, pos.y + 5, 30, 30);
     
     // left eye
     stroke(lightBrown);
     fill(lightBrown);
-    ellipse(x - 5, y, 8, 8);
+    ellipse(pos.x - 5, pos.y, 8, 8);
     fill(0);                // black pupil
-    ellipse(x - 5, y, 5, 5);
+    ellipse(pos.x - 5, pos.y, 5, 5);
     
     // right eye
     stroke(lightBrown);
     fill(lightBrown);
-    ellipse(x + 5, y, 8, 8);
+    ellipse(pos.x + 5, pos.y, 8, 8);
     fill(0);                // black pupil
-    ellipse(x + 5, y, 5, 5);
+    ellipse(pos.x + 5, pos.y, 5, 5);
     
     // mouth
     fill(lightBrown);
-    ellipse(x, y + 10, 20, 10);
+    ellipse(pos.x, pos.y + 10, 20, 10);
     stroke(0);
-    line(x - 5, y + 10, x + 5, y + 10);
+    line(pos.x - 5, pos.y + 10, pos.x + 5, pos.y + 10);
     
     // Gun
     stroke(255, 255, 0);
     fill(255, 255, 0);
-    rect(x - 15, y + 22, 40, 5);
-    rect(x - 15, y + 22, 8, 10);
-    rect(x + 5, y + 22, 5, 10);
+    rect(pos.x - 15, pos.y + 22, 40, 5);
+    rect(pos.x - 15, pos.y + 22, 8, 10);
+    rect(pos.x + 5, pos.y + 22, 5, 10);
     
     // Feet
     stroke(lightBrown);
     fill(lightBrown);
-    ellipse(x - 5, y + 40, 8, 5);
-    ellipse(x + 5, y + 40, 8, 5);
+    ellipse(pos.x - 5, pos.y + 40, 8, 5);
+    ellipse(pos.x + 5, pos.y + 40, 8, 5);
+    
+    popMatrix();
     }
   
 }
