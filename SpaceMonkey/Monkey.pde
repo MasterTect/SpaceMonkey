@@ -12,6 +12,7 @@ class Monkey extends GameObject
   
   void update()
   {
+    // Move Left
     if (keys['A'])
     {
       if ( pos.x > 40 )
@@ -19,6 +20,7 @@ class Monkey extends GameObject
         pos.x -= speed;
       }
     }
+    // Move Up
     if (keys['W'])
     {
       if ( pos.y >= 60 )
@@ -26,6 +28,7 @@ class Monkey extends GameObject
         pos.y -= speed;
       }
     }
+    // Move Right
     if (keys['D'])
     {
       if ( pos.x <= width - 100 )
@@ -33,6 +36,7 @@ class Monkey extends GameObject
         pos.x += speed;
       }
     }
+    // Move Down
     if (keys['S'])
     {
       if ( pos.y < height - 50 )
@@ -40,10 +44,10 @@ class Monkey extends GameObject
         pos.y += speed;
       }
     }
-    if (keys[' '] && elapsed > 30)
+    // Fire Gun
+    if (keys[' '] && elapsed > 40)
     {
-      // Create a new bullet instance and add it to the arraylist of bullets
-
+      // Create a bullet and add it to the arraylist of bullets
       Bullet bullet = new Bullet();
       bullet.pos.x = pos.x;
       bullet.pos.y = pos.y;
@@ -52,10 +56,10 @@ class Monkey extends GameObject
       elapsed = 0;
       
     }
-    elapsed ++;
+    elapsed ++; // Incremented with each frame. Controls fire rate of gun
   }
   
-    
+  // The player character "SpaceMonkey" is drawn
   void render()
   {
 

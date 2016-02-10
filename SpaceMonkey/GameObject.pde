@@ -1,9 +1,9 @@
 class GameObject
 {
-  PVector pos;
-  int speed = 5;
-  int elapsed = 30;
-  int radius;
+  PVector pos;   // Stores the position of all objects
+  int speed = 8; // Controls the pixel per frame speed of objects
+  int elapsed;   // Controls the fire rate of the Gun
+  int radius;    // Stores the radii of all objects.
   
   AudioPlayer audio;
   

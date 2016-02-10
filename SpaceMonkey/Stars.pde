@@ -8,6 +8,8 @@ class Stars extends GameObject
     pos.y = (int) random(0, height);
     radius = (int) random(1, 8);
     
+    // Small stars move slower than larger stars.
+    // Gives the interface a 3D look
     if (radius >= 4)
     {
       speed = (int) random(3, 5);
