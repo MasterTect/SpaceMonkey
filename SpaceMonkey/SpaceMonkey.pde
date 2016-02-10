@@ -147,13 +147,6 @@ void drawGame()
         m.render();
       }
     
-      // Renders the current scores and lives at the top of the screen
-      fill(255);
-      textSize(20);
-      text("Lives: " + lives, width - 100, 50);
-      text("Score: " + score, 50, 50);
-      text("Hi-Score: " + hi_score, centreX - 50, 50);
-      
     }
     
     // Paused. Renders the pause menu
@@ -163,13 +156,27 @@ void drawGame()
       rect(100, 100, width - 200, height - 200);
       fill(255);
       textSize(20);
-      text("Unpause => 0", centreX - 60, centreY + 40);
+      text("Unpause = 0", centreX - 70, centreY + 40);
+      text("Up: W", 140, 160);
+      text("Left: A", 140, 200);
+      text("Right: D", 140, 240);
+      text("Down: S", 140, 280);
+      text("Fire: Space", 140, 320);
       textSize(50);
-      text("Paused", centreX - 70, centreY);
+      text("Paused", centreX - 90, centreY);
      
     }
+    
+    // Renders the current scores and lives at the top of the screen
+    fill(255);
+    textSize(20);
+    text("Lives: " + lives, width - 100, 50);
+    text("Score: " + score, 50, 50);
+    text("Hi-Score: " + hi_score, centreX - 50, 50);
+    text("Kill-Count: " + kills, 40, 80);
 }
 
+int kills;
 int score;
 int hi_score;
 int lives;
@@ -196,35 +203,38 @@ void checkCollisions()
         bullets.remove(bull); // Bullet is removed from array
         
         score += 100; // Every BadGuy killed increments the score by 100
+        kills ++;
         
         // Checks if your score is greater than the current Hi-score
         if (score > hi_score)
         {
           hi_score = score;
         }
+        
+        // 5 kills in a row increments lives by 1
+        if (kills == 5)
+        {
+          lives ++;
+          kills = 0;
+        }
       }
       
-    }
+    } 
     
-    // Checks if the player character has collided with a BadGuy
-    for (int k = badGuys.size() - 1 ; k >= 0   ;k --)
+    // Checks if the distance between the player character and
+    // the BadGuy is shorter than the sum of the two objects radii.
+    // If so, remove BadGuy and return player character to its starting position
+    if ( monkey.pos.dist(bg.pos) < 40)
     {
-      BadGuys bgCol = badGuys.get(k);
+      lives --;   // Decrements lives by one
+      kills = 0;  // Losing a life resets the kill counter to 0
       
-      // Checks if the distance between the player character and
-      // the BadGuy is shorter than the sum of the two objects radii.
-      // If so, remove BadGuy and return player character to its starting position
-      if ( monkey.pos.dist(bgCol.pos) < 50)
-      {
-        lives --;          // Decrements lives by one
+      bg.antiAircraft(); // Player character and BadGuy explosion
+      badGuys.remove(bg); // Remove BadGuy from array
         
-        // Returns the player character to its starting position
-        monkey.pos.x = 40;
-        monkey.pos.y = height/2;
-        
-        bgCol.antiAircraft(); // Player character and BadGuy explosion
-        badGuys.remove(bg); // Remove BadGuy from array
-      }
+      // Returns the player character to its starting position
+      monkey.pos.x = 40;
+      monkey.pos.y = height/2;
     }
     
   }
