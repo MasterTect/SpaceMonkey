@@ -4,7 +4,7 @@ class BadGuys extends GameObject
   BadGuys()
   {
     pos.x = width;
-    pos.y = (int) random(80, height - 30);
+    pos.y = (int) random(80, height - 50);
     radius = 30;
     
     audio = minim.loadFile("Anti Aircraft.mp3");

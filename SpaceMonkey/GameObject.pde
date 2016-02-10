@@ -4,8 +4,6 @@ class GameObject
   int speed = 5;
   int elapsed = 30;
   int radius;
-  int lives;
-  int level = 1;
   
   AudioPlayer audio;
   

@@ -28,6 +28,7 @@ void setup()
   kills = 0;
   score = 0;
   hi_score = 1000;
+  lives = 3;
   
   monkey = new Monkey();
 }
@@ -61,6 +62,13 @@ void draw()
     s.render();
   }
   
+  if (lives == 0)
+  {
+    toggle = ! toggle;
+    score = 0;
+    lives = 3;
+  }
+  
   if (! toggle)
   {
     stroke(255, 0, 0);
@@ -69,6 +77,9 @@ void draw()
     fill(255, 0, 0);
     textSize(50);
     text("PLAY", centreX - 50, centreY);
+    fill(255);
+    textSize(40);
+    text("Hi-Score: " + hi_score, centreX - 150, centreY + 60);
   }
   else
   {
@@ -105,6 +116,7 @@ void drawGame()
     
     if (pause == 0)
     {
+      
       monkey.update();
       monkey.render();
       
@@ -124,11 +136,16 @@ void drawGame()
       {
         m.update();
         m.render();
+        
+        if (m.pos.x < 0)
+        {
+          badGuys.remove(m);
+        }
       }
       
       fill(255);
       textSize(20);
-      text("Lives: " + monkey.lives, width - 100, 50);
+      text("Lives: " + lives, width - 100, 50);
       text("Score: " + score, 50, 50);
       text("Hi-Score: " + hi_score, centreX - 50, 50);
       
@@ -150,6 +167,7 @@ void drawGame()
 int kills;
 int score;
 int hi_score;
+int lives;
 
 void checkCollisions()
 {
@@ -175,6 +193,19 @@ void checkCollisions()
         }
       }
       
+    }
+    
+    for (int k = badGuys.size() - 1 ; k >= 0   ;k --)
+    {
+      BadGuys bgCol = badGuys.get(k);
+      
+      if ( monkey.pos.dist(bgCol.pos) < 50)
+      {
+        lives --;
+        monkey.pos.x = 40;
+        monkey.pos.y = height/2;
+        bgCol.antiAircraft();
+      }
     }
     
   }
